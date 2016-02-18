@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCIntro.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,5 +26,25 @@ namespace MVCIntro.Controllers
             ViewBag.Dictionary = myDictionary;
             return View();
         }
+
+        public ActionResult Funky(int count, string name)
+        {
+            ViewBag.Count = count;
+            ViewBag.Name = "My name is " + name;
+            return View();
+        }
+
+        public ActionResult ShowProduct()
+        {
+            Product p = new Product {
+                ProductID = 100,
+                Name = "Kayak",
+                Description = "A boat for one person",
+                Price = 750M,
+                Category = "Watersports"
+            };
+            return View(p);
+        }
+
     }
 }

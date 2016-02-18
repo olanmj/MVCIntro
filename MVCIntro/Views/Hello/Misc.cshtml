@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Misc";
+}
+
+<h2>Misc</h2>
+
+<h2>The Array</h2>
+<ol>
+@foreach (var s in ViewBag.Array)
+{
+    <li>@s</li>
+}
+</ol>
+
+<h2>The List</h2>
+@foreach (int i in ViewBag.List)
+{
+    @i <span> </span>  
+}
+<h2>The Dictionary</h2>
+@foreach (var item in ViewBag.Dictionary.Keys)
+{
+    <div>@item : @ViewBag.Dictionary[item]</div>
+}
+

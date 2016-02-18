@@ -17,7 +17,7 @@ namespace MVCIntro.Controllers
 
         public ActionResult Misc()
         {
-            string[] stringArray = { "apple", "orange", "banana" };
+            string[] stringArray = { "apple", "orange", "banana",  "kiwi"};
             List<int> intList = new List<int> { 10, 20, 30, 40 };
             Dictionary<string, int> myDictionary = new Dictionary<string, int> { { "apple", 4131 }, { "orange", 3107 }, { "banana", 4011 } };
             ViewBag.Array = stringArray;

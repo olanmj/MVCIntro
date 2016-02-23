@@ -46,5 +46,17 @@ namespace MVCIntro.Controllers
             return View(p);
         }
 
+        [HttpPost]
+        public ActionResult ShowProduct(Product p)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(p); 
+            } else
+            {
+                return ShowProduct();
+            }
+        }
+
     }
 }

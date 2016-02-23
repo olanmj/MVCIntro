@@ -34,6 +34,7 @@ namespace MVCIntro.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ShowProduct()
         {
             Product p = new Product {
@@ -43,7 +44,27 @@ namespace MVCIntro.Controllers
                 Price = 750M,
                 Category = "Watersports"
             };
+
+            //Product q = new Product
+            //{
+            //    ProductID = 101,
+            //    Name = "Canoe",
+            //    Description = "A boat for one or 2 persons",
+            //    Price = 7500.78753M,
+            //    Category = "Watersports"
+            //};
+
             return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult ShowProduct(Product p)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(p);
+            }
+            return View();
         }
 
     }

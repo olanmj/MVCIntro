@@ -18,7 +18,7 @@ namespace MVCIntro.Controllers
 
         public ActionResult Misc()
         {
-            string[] stringArray = { "apple", "orange", "banana" };
+            string[] stringArray = { "apple", "orange", "banana",  "kiwi"};
             List<int> intList = new List<int> { 10, 20, 30, 40 };
             Dictionary<string, int> myDictionary = new Dictionary<string, int> { { "apple", 4131 }, { "orange", 3107 }, { "banana", 4011 } };
             ViewBag.Array = stringArray;
@@ -27,29 +27,24 @@ namespace MVCIntro.Controllers
             return View();
         }
 
-        public ActionResult Params(int count, string name)
+        public ActionResult Funky(int count, string name)
         {
             ViewBag.Count = count;
-            ViewBag.Name = name;
+            ViewBag.Name = "My name is " + name;
             return View();
         }
 
-        public ActionResult ShowAProduct()
+        public ActionResult ShowProduct()
         {
-            Product p = new Product
-            {
-                Name = "Maggot",
-                Description = "A stinking bug",
-                Price = 1M,
-                Category = "Bugs"
+            Product p = new Product {
+                ProductID = 100,
+                Name = "Kayak",
+                Description = "A boat for one person",
+                Price = 750M,
+                Category = "Watersports"
             };
             return View(p);
         }
 
-        [HttpPost]
-        public ActionResult ShowAProduct(Product p)
-        {
-            return View(p);
-        }
     }
 }

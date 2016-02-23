@@ -13,5 +13,4 @@ namespace MVCIntro.Models
         public decimal Price { get; set; }
         public string Category { set; get; }
     }
-
 }

@@ -7,17 +7,22 @@
 
 <h2>The Array</h2>
 <ol>
-@foreach (var s in ViewBag.Array)
-{
-    <li>@s</li>
-}
+    @foreach (var item in ViewBag.Array)
+    {
+    <li>@item</li>
+    }
 </ol>
+    
 
 <h2>The List</h2>
-@foreach (int i in ViewBag.List)
-{
-    @i <span> </span>  
+@{
+    string list = "";
+    foreach (int i in ViewBag.List)
+    {
+        list += i + ", ";
+    }
 }
+<span>@list.Substring(0, list.Length-2)</span>
 <h2>The Dictionary</h2>
 @foreach (var item in ViewBag.Dictionary.Keys)
 {

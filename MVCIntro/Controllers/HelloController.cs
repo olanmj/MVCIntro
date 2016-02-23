@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCIntro.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,31 @@ namespace MVCIntro.Controllers
             ViewBag.List = intList;
             ViewBag.Dictionary = myDictionary;
             return View();
+        }
+
+        public ActionResult Params(int count, string name)
+        {
+            ViewBag.Count = count;
+            ViewBag.Name = name;
+            return View();
+        }
+
+        public ActionResult ShowAProduct()
+        {
+            Product p = new Product
+            {
+                Name = "Maggot",
+                Description = "A stinking bug",
+                Price = 1M,
+                Category = "Bugs"
+            };
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult ShowAProduct(Product p)
+        {
+            return View(p);
         }
     }
 }

@@ -64,7 +64,8 @@ namespace MVCIntro.Controllers
             {
                 return View(p);
             }
-            return View();
+            // Go back to the original Product 
+            return ShowProduct();
         }
 
     }

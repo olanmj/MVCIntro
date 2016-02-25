@@ -130,7 +130,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Products1Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,11 +176,7 @@
     <Content Include="Views\Hello\Misc.cshtml" />
     <Content Include="Views\Hello\Funky.cshtml" />
     <Content Include="Views\Hello\ShowProduct.cshtml" />
-    <Content Include="Views\Products1\Create.cshtml" />
-    <Content Include="Views\Products1\Delete.cshtml" />
-    <Content Include="Views\Products1\Details.cshtml" />
-    <Content Include="Views\Products1\Edit.cshtml" />
-    <Content Include="Views\Products1\Index.cshtml" />
+    <Content Include="Views\Hello\Params.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,6 +16,13 @@ namespace MVCIntro.Controllers
             return View();
         }
 
+        public ActionResult Params(int count, string name)
+        {
+            ViewBag.Count = count;
+            ViewBag.Name = name;
+            return View();
+        }
+
         public ActionResult Misc()
         {
             string[] stringArray = { "apple", "orange", "banana",  "kiwi"};

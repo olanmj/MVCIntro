@@ -35,3 +35,21 @@ legend.border {
     padding:0 10px; 
     border-bottom:none;
 }
+
+.container .jumbotron {
+    border-radius: 100px 10px 100px 10px;
+    background-image: url('images/ExplodingglassButtons.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #dff7ea;
+}
+.jumbotron h1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: 900;
+    font-size: 6em;
+}
+
+/*@font-face {
+    font-family: 'ASTONISHED';
+    src: url('../fonts/ASTONISHED.TTF') format('truetype');
+}*/

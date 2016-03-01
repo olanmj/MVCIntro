@@ -15,9 +15,16 @@ namespace MVCIntro.Controllers
         private ProductContext db = new ProductContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string orderby)
         {
-            return View(db.Products.ToList());
+            ViewBag.Ascending = true;
+            if (string.IsNullOrEmpty(orderby))
+            {
+                return View(db.Products.ToList());
+            } else
+            {
+                return View(db.Products.OrderBy(p => p.Price).ToList());
+            }
         }
 
         // GET: Products/Details/5

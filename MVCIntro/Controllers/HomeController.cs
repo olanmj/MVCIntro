@@ -15,14 +15,14 @@ namespace MVCIntro.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-            ViewBag.AnotherMessage = "This is my application";
+            ViewBag.Message = "Purveyors of the finest dumpster diving finds since 1985!";
+            ViewBag.AnotherMessage = "You know you want some.";
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "The Junk Shop";
 
             return View();
         }

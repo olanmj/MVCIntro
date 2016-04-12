@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Here's the products:</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="hidden" id="productid" value="0" />
+                        <table id="productTable"
+                               class="table table-bordered table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>ID</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="name"></div>
+            <div id="description"></div>
+            <div id="price"></div>
+            <div id="category"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            productList();
+        });
+
+        function productList() {
+            // Call Web API to get a list of Product
+            $.ajax({
+                url: '/api/ProductsAPI/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (products) {
+                    buildProductList(products);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+
+        function buildProductList(products) {
+            // Iterate over the collection of data
+            $.each(products, function (index, product) {
+                // Add a row to the Product table
+                productAddRow(product);
+            });
+        }
+
+        function productAddRow(product) {
+            // Append row to <table>
+            $("#productTable tbody").append(productBuildTableRow(product));
+        }
+
+        function productBuildTableRow(product) {
+            var ret =
+              "<tr>" +
+               "<td>" + product.Name + "</td>" +
+               "<td>" + product.Description + "</td>"
+                + "<td>" + product.Price + "</td>" +
+                "<td>" + product.Category + "</td>" +
+                "<td>" + product.ProductID + "</td>" +
+                "<td>" +
+                "<button type='button' " +
+                "onclick='productGet(this);' " +
+                "class='btn btn-default' " +
+                "data-id='" + product.ProductID + "'>" +
+                "<span class='glyphicon glyphicon-edit' />"
+                 + "</button>" + "</td >" +
+              "</tr>";
+            return ret;
+        }
+
+        function productGet(ctl) {
+            // Get product id from data- attribute
+            var id = $(ctl).data("id");
+
+            // Store product id in a hidden field
+            $("#productid").val(id);
+
+            // Call Web API to get a list of Products
+            $.ajax({
+                url: "/api/ProductsAPI/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (product) {
+                    productToFields(product);
+
+                    // Change Update Button Text
+                    //  $("#updateButton").text("Update");
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+
+        function productToFields(product) {
+            $("#name").text(product.Name);
+            $("#description").text(product.Description);
+            $("#price").text(product.Price);
+            $("#category").text(product.Category);
+        }
+
+        function handleException(request, message,
+                         error) {
+            var msg = "";
+            msg += "Code: " + request.status + "\n";
+            msg += "Text: " + request.statusText + "\n";
+            if (request.responseJSON != null) {
+                msg += "Message" +
+                    request.responseJSON.Message + "\n";
+            }
+            alert(msg);
+        }
+    </script>
+</body>
+</html>

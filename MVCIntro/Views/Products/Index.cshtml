@@ -19,7 +19,7 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.Price)*@
-            @Html.ActionLink("Price", "Index", new { orderby = "price" })
+            @Html.ActionLink("Price", "Index", new { orderby = "price", dir = ViewBag.Direction })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Category)

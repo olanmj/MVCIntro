@@ -13,6 +13,7 @@ namespace MVCIntro.Controllers
         public ActionResult Index(int id)
         {
             ViewBag.Value = id;
+
             return View();
         }
 

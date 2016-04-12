@@ -15,15 +15,19 @@ namespace MVCIntro.Controllers
         private ProductContext db = new ProductContext();
 
         // GET: Products
-        public ActionResult Index(string orderby)
+        public ActionResult Index(string orderby, string dir)
         {
-            ViewBag.Ascending = true;
+            ViewBag.Direction = "asc";
             if (string.IsNullOrEmpty(orderby))
             {
                 return View(db.Products.ToList());
+            } else if (dir == "asc") 
+            {
+                ViewBag.Direction = "desc";
+                return View(db.Products.OrderBy(p => p.Price).ToList());
             } else
             {
-                return View(db.Products.OrderBy(p => p.Price).ToList());
+                return View(db.Products.OrderByDescending(p => p.Price).ToList());
             }
         }
 
@@ -66,6 +70,7 @@ namespace MVCIntro.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
